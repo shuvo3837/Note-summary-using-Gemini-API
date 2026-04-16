@@ -16,11 +16,18 @@ with st.sidebar:
         if len(img)>3:
             st.error("upload at max 3 img")
         else:
-            col = st.columns(len(img))
-
             st.subheader("your uploaded image")
+            col = st.columns(len(img))
 
             for i,img in enumerate(img):
                 with col[i]:
                     st.image(img)
-                    
+
+
+    selected_option = st.selectbox(
+        "Enter the difficulty of your Quiz",
+        ("easy","medium","hard"),
+        index=0
+    )
+
+    st.button("Click the button to initiate AI",type="primary")
