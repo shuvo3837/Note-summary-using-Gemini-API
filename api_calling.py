@@ -28,3 +28,14 @@ def audio_transcript(text):
     speech.write_to_fp(audio_buffer)
     
     return audio_buffer
+
+def quiz_generator(img,difficulty):
+    
+    prompt = f"""generate 5 quiz question based on the image with {difficulty} make sure to add necessary markdown to differentiate the options"""
+
+    response = client.models.generate_content(
+        model="gemini-3-flash-preview",
+        contents=[img,prompt],
+    )
+
+    return response.text
